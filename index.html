@@ -132,6 +132,7 @@
   .pieza{
     border-radius:var(--radio);overflow:hidden;background:var(--panel);border:1px solid var(--borde);
     transition:transform .25s, border-color .25s, box-shadow .25s;text-decoration:none;display:block;position:relative;
+    cursor:pointer;margin:0;
   }
   .pieza:hover{transform:translateY(-8px)}
   .pieza:nth-child(4n+1):hover{border-color:var(--rosa);box-shadow:0 16px 44px rgba(255,77,141,.22)}
@@ -143,7 +144,65 @@
   .pieza .ph{
     width:100%;aspect-ratio:4/3;display:grid;place-items:center;font-family:'Unbounded';
     font-weight:700;font-size:.8rem;color:var(--suave);background:linear-gradient(135deg,#191729,#111019);
+    position:relative;overflow:hidden;
   }
+  .pieza .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .pieza:hover .ph img{transform:scale(1.05)}
+
+  /* ---------- MODAL GALERÍA POR MARCA ---------- */
+  .modal{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    background:rgba(5,5,10,.85);backdrop-filter:blur(8px);padding:4vw;
+  }
+  .modal[hidden]{display:none}
+  .modal-caja{
+    background:var(--panel);border:1px solid var(--borde);border-radius:calc(var(--radio) + 6px);
+    max-width:900px;width:100%;max-height:88vh;overflow-y:auto;padding:30px 26px;position:relative;
+  }
+  .modal-cerrar{
+    position:sticky;top:0;float:right;width:42px;height:42px;border-radius:50%;
+    border:1px solid var(--borde);background:var(--fondo);color:var(--texto);
+    font-size:1.1rem;cursor:pointer;transition:border-color .2s;
+  }
+  .modal-cerrar:hover{border-color:var(--rosa)}
+  .modal-caja h3{font-size:1.4rem;margin-bottom:6px}
+  .modal-caja .modal-detalle{color:var(--suave);font-size:.92rem;margin-bottom:22px}
+  .modal-grid{columns:2 240px;column-gap:16px}
+  .modal-vacio{color:var(--suave);font-size:.95rem;padding:20px 0}
+
+  /* Mockup post de Instagram (piezas de feed) */
+  .ig-post{
+    background:#0E0D17;border:1px solid var(--borde);border-radius:16px;overflow:hidden;
+    margin-bottom:16px;break-inside:avoid;
+  }
+  .ig-head{display:flex;align-items:center;gap:10px;padding:10px 12px}
+  .ig-avatar{
+    width:30px;height:30px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--rosa),var(--amarillo));
+    display:grid;place-items:center;font-family:'Unbounded';font-weight:700;font-size:.62rem;color:#fff;
+  }
+  .ig-user{font-size:.82rem;font-weight:600}
+  .ig-post img{width:100%;height:auto;display:block}
+  .ig-actions{display:flex;gap:14px;padding:10px 12px 4px;font-size:1.05rem;color:var(--texto)}
+  .ig-actions .guardar{margin-left:auto}
+  .ig-likes{padding:0 12px 12px;font-size:.78rem;color:var(--suave)}
+
+  /* Mockup celular con story (piezas 9:16) */
+  .story-frame{
+    position:relative;border-radius:28px;border:4px solid #1E1B30;overflow:hidden;
+    margin-bottom:16px;break-inside:avoid;background:#000;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .story-frame img{width:100%;height:auto;display:block}
+  .story-top{
+    position:absolute;top:0;left:0;right:0;padding:12px 12px 18px;
+    display:flex;flex-direction:column;gap:9px;
+    background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);
+  }
+  .story-bar{height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+  .story-bar span{display:block;height:100%;width:62%;background:#fff;border-radius:2px}
+  .story-user{display:flex;align-items:center;gap:8px;font-size:.78rem;color:#fff;font-weight:600}
+  .story-user .ig-avatar{width:26px;height:26px;font-size:.55rem}
   .pieza figcaption{padding:18px 20px;border-top:1px solid var(--borde);display:flex;justify-content:space-between;align-items:center;gap:10px}
   .pieza h3{font-size:.98rem;margin-bottom:4px}
   .pieza p{font-size:.85rem;color:var(--suave)}
@@ -188,16 +247,15 @@
   .ia-card h3{font-size:1rem;margin-bottom:9px}
   .ia-card p{font-size:.9rem;color:var(--suave)}
 
-  /* ---------- GALERÍA IA ---------- */
-  .ia-galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:34px}
-  .ia-pieza{
-    border-radius:var(--radio);overflow:hidden;border:1px solid var(--borde);background:var(--panel);
-    aspect-ratio:1/1;position:relative;display:grid;place-items:center;
-    font-family:'Unbounded';font-weight:700;font-size:.75rem;color:var(--suave);
-    transition:transform .25s, border-color .25s;text-decoration:none;text-align:center;padding:10px;
+  /* ---------- GALERÍA IA (mosaico, cualquier formato) ---------- */
+  .ia-galeria{columns:2 240px;column-gap:16px;margin-top:34px}
+  .ia-galeria img{
+    width:100%;height:auto;display:block;margin-bottom:16px;break-inside:avoid;
+    border-radius:var(--radio);border:1px solid var(--borde);
+    transition:transform .25s, border-color .25s;
   }
-  .ia-pieza:hover{transform:translateY(-6px);border-color:var(--rosa)}
-  .ia-pieza img,.ia-pieza video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ia-galeria img:hover{transform:translateY(-4px);border-color:var(--rosa)}
+  .ia-vacio{color:var(--suave);font-size:.95rem}
 
   /* ---------- SOBRE MÍ ---------- */
   .sobre{display:grid;grid-template-columns:1fr 1.5fr;gap:46px;align-items:center}
@@ -301,33 +359,34 @@
   <h2 class="titulo-seccion reveal"><span class="num">02</span> Trabajos</h2>
   <p class="sub-seccion reveal">Piezas gráficas y contenido para redes desarrollados en agencia. Haz clic en cada una para verla.</p>
   <div class="galeria">
-    <!-- ✏️ CADA PIEZA:
-         1. En href pega el enlace donde quieres que lleve (post de Instagram, proyecto de Behance, etc.)
-         2. Reemplaza el <div class="ph"> por <img src="imagenes/tu-archivo.jpg" alt="Descripción"> -->
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 01</div>
+    <!-- ✏️ FOTOS DE CADA MARCA: súbelas a la carpeta "imagenes" con estos nombres:
+         doggis-1.jpg, doggis-2.jpg, doggis-3.jpg... (hasta 8 por marca)
+         mamut-1.jpg, lovdo-1.jpg, docpopcorn-1.jpg, tommybeans-1.jpg, barriochicken-1.jpg
+         La primera foto (-1) se usa como portada de la tarjeta. -->
+    <figure class="pieza reveal" data-marca="doggis" data-nombre="Doggis" data-detalle="Piezas para redes sociales · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 01<img src="imagenes/doggis-1.jpg" alt="Piezas para Doggis" onerror="this.remove()"></div>
       <figcaption><div><h3>Doggis</h3><p>Piezas para redes sociales · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 02</div>
+    </figure>
+    <figure class="pieza reveal" data-marca="mamut" data-nombre="Mamut" data-detalle="Contenido gráfico · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 02<img src="imagenes/mamut-1.jpg" alt="Piezas para Mamut" onerror="this.remove()"></div>
       <figcaption><div><h3>Mamut</h3><p>Contenido gráfico · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 03</div>
+    </figure>
+    <figure class="pieza reveal" data-marca="lovdo" data-nombre="Lovdo" data-detalle="Dirección de arte · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 03<img src="imagenes/lovdo-1.jpg" alt="Piezas para Lovdo" onerror="this.remove()"></div>
       <figcaption><div><h3>Lovdo</h3><p>Dirección de arte · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 04</div>
+    </figure>
+    <figure class="pieza reveal" data-marca="docpopcorn" data-nombre="Doc Popcorn" data-detalle="Contenido para redes · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 04<img src="imagenes/docpopcorn-1.jpg" alt="Piezas para Doc Popcorn" onerror="this.remove()"></div>
       <figcaption><div><h3>Doc Popcorn</h3><p>Contenido para redes · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 05</div>
+    </figure>
+    <figure class="pieza reveal" data-marca="tommybeans" data-nombre="Tommy Beans" data-detalle="Piezas gráficas · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 05<img src="imagenes/tommybeans-1.jpg" alt="Piezas para Tommy Beans" onerror="this.remove()"></div>
       <figcaption><div><h3>Tommy Beans</h3><p>Piezas gráficas · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
-    <a class="pieza reveal" href="#" target="_blank" rel="noopener">
-      <div class="ph">PIEZA 06</div>
+    </figure>
+    <figure class="pieza reveal" data-marca="barriochicken" data-nombre="Barrio Chicken" data-detalle="Dirección de arte · Agencia Mullet" role="button" tabindex="0">
+      <div class="ph">PIEZA 06<img src="imagenes/barriochicken-1.jpg" alt="Piezas para Barrio Chicken" onerror="this.remove()"></div>
       <figcaption><div><h3>Barrio Chicken</h3><p>Dirección de arte · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
-    </a>
+    </figure>
   </div>
 </section>
 
@@ -379,16 +438,9 @@
 
   <h3 class="reveal" style="margin-top:52px;font-size:1.15rem">Galería IA</h3>
   <p class="sub-seccion reveal" style="margin-top:8px;margin-bottom:0">Fotos y videos generados y dirigidos por mí con herramientas de IA.</p>
-  <div class="ia-galeria">
-    <!-- ✏️ FOTOS IA: reemplaza el texto por <img src="imagenes/ia-01.jpg" alt="Descripción">
-         ✏️ VIDEOS IA: reemplaza por <video src="videos/ia-01.mp4" autoplay muted loop playsinline></video>
-         (sube los .mp4 a una carpeta "videos" en GitHub; máx 100MB por archivo)
-         Puedes copiar y pegar los bloques para agregar más. -->
-    <a class="ia-pieza reveal" href="#">FOTO IA 01</a>
-    <a class="ia-pieza reveal" href="#">FOTO IA 02</a>
-    <a class="ia-pieza reveal" href="#">VIDEO IA 01</a>
-    <a class="ia-pieza reveal" href="#">VIDEO IA 02</a>
-  </div>
+  <!-- ✏️ FOTOS IA: súbelas a la carpeta "imagenes" con nombres ia-1.jpg, ia-2.jpg, ia-3.jpg...
+       (hasta 12). Pueden ser de cualquier formato: vertical, horizontal, story, cuadrada. -->
+  <div class="ia-galeria" id="ia-galeria"></div>
 </section>
 
 <section id="sobre">
@@ -432,11 +484,109 @@
   © 2026 Yanhara Faúndez — Dirección de Arte · <a href="mailto:yayifriofaud@gmail.com">yayifriofaud@gmail.com</a>
 </footer>
 
+<div class="modal" id="modal" hidden>
+  <div class="modal-caja">
+    <button class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar">✕</button>
+    <h3 id="modal-titulo"></h3>
+    <p class="modal-detalle" id="modal-detalle"></p>
+    <div class="modal-grid" id="modal-grid"></div>
+  </div>
+</div>
+
 <script>
+  // Animación de aparición al hacer scroll
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Galería por marca: al tocar una tarjeta se abre con hasta 8 piezas
+  // Las imágenes se buscan como imagenes/NOMBREMARCA-1.jpg, -2.jpg, etc.
+  const modal = document.getElementById('modal');
+  const mGrid = document.getElementById('modal-grid');
+  const mTitulo = document.getElementById('modal-titulo');
+  const mDetalle = document.getElementById('modal-detalle');
+  const MAX_PIEZAS = 8;
+
+  function crearMockup(img, marca, nombre){
+    const esStory = img.naturalHeight / img.naturalWidth > 1.45;
+    const inicial = nombre.charAt(0).toUpperCase();
+    const usuario = '@' + marca;
+    if(esStory){
+      const frame = document.createElement('div');
+      frame.className = 'story-frame';
+      frame.innerHTML = '<div class="story-top"><div class="story-bar"><span></span></div>' +
+        '<div class="story-user"><span class="ig-avatar">' + inicial + '</span>' + usuario + '</div></div>';
+      frame.appendChild(img);
+      return frame;
+    }
+    const post = document.createElement('div');
+    post.className = 'ig-post';
+    post.innerHTML = '<div class="ig-head"><span class="ig-avatar">' + inicial + '</span><span class="ig-user">' + usuario + '</span></div>';
+    post.appendChild(img);
+    const acciones = document.createElement('div');
+    acciones.className = 'ig-actions';
+    acciones.innerHTML = '<span>♡</span><span>💬</span><span>➤</span><span class="guardar">⌲</span>';
+    post.appendChild(acciones);
+    const likes = document.createElement('div');
+    likes.className = 'ig-likes';
+    likes.textContent = 'Diseño: Yanhara Faúndez · Agencia Mullet';
+    post.appendChild(likes);
+    return post;
+  }
+
+  function abrirGaleria(card){
+    const marca = card.dataset.marca;
+    const nombre = card.dataset.nombre;
+    mTitulo.textContent = nombre;
+    mDetalle.textContent = card.dataset.detalle;
+    mGrid.innerHTML = '';
+    for(let i = 1; i <= MAX_PIEZAS; i++){
+      const img = document.createElement('img');
+      img.alt = nombre + ' pieza ' + i;
+      img.loading = 'lazy';
+      img.onload = () => { mGrid.appendChild(crearMockup(img, marca, nombre)); };
+      img.onerror = () => {};
+      img.src = 'imagenes/' + marca + '-' + i + '.jpg';
+    }
+    setTimeout(()=>{
+      if(mGrid.children.length === 0){
+        mGrid.innerHTML = '<p class="modal-vacio">Piezas próximamente ✨</p>';
+      }
+    }, 1800);
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarGaleria(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.pieza[data-marca]').forEach(card=>{
+    card.addEventListener('click', ()=>abrirGaleria(card));
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); abrirGaleria(card);} });
+  });
+  document.getElementById('modal-cerrar').addEventListener('click', cerrarGaleria);
+  modal.addEventListener('click', e=>{ if(e.target===modal) cerrarGaleria(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') cerrarGaleria(); });
+
+  // Galería IA: carga automática de imagenes/ia-1.jpg hasta ia-12.jpg
+  const iaGal = document.getElementById('ia-galeria');
+  let iaCargadas = 0;
+  for(let i = 1; i <= 12; i++){
+    const img = document.createElement('img');
+    img.alt = 'Pieza generada con IA ' + i;
+    img.loading = 'lazy';
+    img.onload = () => { iaCargadas++; iaGal.appendChild(img); };
+    img.onerror = () => {};
+    img.src = 'imagenes/ia-' + i + '.jpg';
+  }
+  setTimeout(()=>{
+    if(iaCargadas === 0){
+      iaGal.innerHTML = '<p class="ia-vacio">Galería próximamente ✨</p>';
+    }
+  }, 1800);
 </script>
 
 </body>
