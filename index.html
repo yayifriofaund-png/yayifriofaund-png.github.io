@@ -544,7 +544,6 @@
     for(let i = 1; i <= MAX_PIEZAS; i++){
       const img = document.createElement('img');
       img.alt = nombre + ' pieza ' + i;
-      img.loading = 'lazy';
       img.onload = () => { mGrid.appendChild(crearMockup(img, marca, nombre)); };
       img.onerror = () => {
         if(!img.dataset.f){ img.dataset.f = 1; img.src = 'imágenes/' + marca + '-' + i + '.jpg'; }
@@ -555,7 +554,7 @@
       if(mGrid.children.length === 0){
         mGrid.innerHTML = '<p class="modal-vacio">Piezas próximamente ✨</p>';
       }
-    }, 1800);
+    }, 5000);
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
   }
@@ -579,7 +578,6 @@
   for(let i = 1; i <= 12; i++){
     const img = document.createElement('img');
     img.alt = 'Pieza generada con IA ' + i;
-    img.loading = 'lazy';
     img.onload = () => { iaCargadas++; iaGal.appendChild(img); };
     img.onerror = () => {
       if(!img.dataset.f){ img.dataset.f = 1; img.src = 'imágenes/ia-' + i + '.jpg'; }
@@ -587,10 +585,10 @@
     img.src = 'imagenes/ia-' + i + '.jpg';
   }
   setTimeout(()=>{
-    if(iaCargadas === 0){
+    if(iaCargadas === 0 && iaGal.children.length === 0){
       iaGal.innerHTML = '<p class="ia-vacio">Galería próximamente ✨</p>';
     }
-  }, 1800);
+  }, 6000);
 </script>
 
 </body>
