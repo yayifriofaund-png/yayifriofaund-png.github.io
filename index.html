@@ -364,27 +364,27 @@
          mamut-1.jpg, lovdo-1.jpg, docpopcorn-1.jpg, tommybeans-1.jpg, barriochicken-1.jpg
          La primera foto (-1) se usa como portada de la tarjeta. -->
     <figure class="pieza reveal" data-marca="doggis" data-nombre="Doggis" data-detalle="Piezas para redes sociales · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 01<img src="imagenes/doggis-1.jpg" alt="Piezas para Doggis" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 01<img src="imagenes/doggis-1.jpg" alt="Piezas para Doggis" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Doggis</h3><p>Piezas para redes sociales · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="mamut" data-nombre="Mamut" data-detalle="Contenido gráfico · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 02<img src="imagenes/mamut-1.jpg" alt="Piezas para Mamut" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 02<img src="imagenes/mamut-1.jpg" alt="Piezas para Mamut" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Mamut</h3><p>Contenido gráfico · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="lovdo" data-nombre="Lovdo" data-detalle="Dirección de arte · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 03<img src="imagenes/lovdo-1.jpg" alt="Piezas para Lovdo" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 03<img src="imagenes/lovdo-1.jpg" alt="Piezas para Lovdo" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Lovdo</h3><p>Dirección de arte · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="docpopcorn" data-nombre="Doc Popcorn" data-detalle="Contenido para redes · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 04<img src="imagenes/docpopcorn-1.jpg" alt="Piezas para Doc Popcorn" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 04<img src="imagenes/docpopcorn-1.jpg" alt="Piezas para Doc Popcorn" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Doc Popcorn</h3><p>Contenido para redes · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="tommybeans" data-nombre="Tommy Beans" data-detalle="Piezas gráficas · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 05<img src="imagenes/tommybeans-1.jpg" alt="Piezas para Tommy Beans" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 05<img src="imagenes/tommybeans-1.jpg" alt="Piezas para Tommy Beans" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Tommy Beans</h3><p>Piezas gráficas · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="barriochicken" data-nombre="Barrio Chicken" data-detalle="Dirección de arte · Agencia Mullet" role="button" tabindex="0">
-      <div class="ph">PIEZA 06<img src="imagenes/barriochicken-1.jpg" alt="Piezas para Barrio Chicken" onerror="this.remove()"></div>
+      <div class="ph">PIEZA 06<img src="imagenes/barriochicken-1.jpg" alt="Piezas para Barrio Chicken" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
       <figcaption><div><h3>Barrio Chicken</h3><p>Dirección de arte · Agencia Mullet</p></div><span class="flecha">→</span></figcaption>
     </figure>
   </div>
@@ -447,7 +447,7 @@
   <h2 class="titulo-seccion reveal"><span class="num">05</span> Sobre mí</h2>
   <div class="sobre" style="margin-top:30px">
     <div class="foto-marco reveal">
-      <img src="imagenes/yanhara.jpg" alt="Yanhara Faúndez, directora de arte">
+      <img src="imagenes/yanhara.jpg" alt="Yanhara Faúndez, directora de arte" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='imágenes/yanhara.jpg'}">
     </div>
     <div class="reveal">
       <p style="font-size:1.15rem;margin-bottom:16px">
@@ -546,7 +546,9 @@
       img.alt = nombre + ' pieza ' + i;
       img.loading = 'lazy';
       img.onload = () => { mGrid.appendChild(crearMockup(img, marca, nombre)); };
-      img.onerror = () => {};
+      img.onerror = () => {
+        if(!img.dataset.f){ img.dataset.f = 1; img.src = 'imágenes/' + marca + '-' + i + '.jpg'; }
+      };
       img.src = 'imagenes/' + marca + '-' + i + '.jpg';
     }
     setTimeout(()=>{
@@ -579,7 +581,9 @@
     img.alt = 'Pieza generada con IA ' + i;
     img.loading = 'lazy';
     img.onload = () => { iaCargadas++; iaGal.appendChild(img); };
-    img.onerror = () => {};
+    img.onerror = () => {
+      if(!img.dataset.f){ img.dataset.f = 1; img.src = 'imágenes/ia-' + i + '.jpg'; }
+    };
     img.src = 'imagenes/ia-' + i + '.jpg';
   }
   setTimeout(()=>{
