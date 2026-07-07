@@ -183,6 +183,17 @@
   }
   .ig-user{font-size:.82rem;font-weight:600}
   .ig-post img{width:100%;height:auto;display:block}
+  .ig-tira{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .ig-tira::-webkit-scrollbar{display:none}
+  .ig-tira img{flex:0 0 100%;width:100%;scroll-snap-align:start;object-fit:cover}
+  .ig-contador{
+    position:absolute;top:52px;right:10px;background:rgba(0,0,0,.65);color:#fff;
+    font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:999px;z-index:2;
+  }
+  .ig-puntos{display:flex;gap:5px;justify-content:center;padding:8px 0 0}
+  .ig-puntos span{width:6px;height:6px;border-radius:50%;background:var(--borde);transition:background .2s}
+  .ig-puntos span.activo{background:var(--azul)}
+  .ig-post{position:relative}
   .ig-actions{display:flex;gap:14px;padding:10px 12px 4px;font-size:1.05rem;color:var(--texto)}
   .ig-actions .guardar{margin-left:auto}
   .ig-likes{padding:0 12px 12px;font-size:.78rem;color:var(--suave)}
@@ -364,27 +375,27 @@
          mamut-1.jpg, lovdo-1.jpg, docpopcorn-1.jpg, tommybeans-1.jpg, barriochicken-1.jpg
          La primera foto (-1) se usa como portada de la tarjeta. -->
     <figure class="pieza reveal" data-marca="doggis" data-nombre="Doggis" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 01<img src="imagenes/doggis-1.jpg" alt="Piezas para Doggis" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 01<img src="imagenes/doggis-1.jpg" alt="Piezas para Doggis" onerror="var s=['imágenes/doggis-1.jpg','imagenes/doggis-1-1.jpg','imágenes/doggis-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Doggis</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="mamut" data-nombre="Mamut" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 02<img src="imagenes/mamut-1.jpg" alt="Piezas para Mamut" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 02<img src="imagenes/mamut-1.jpg" alt="Piezas para Mamut" onerror="var s=['imágenes/mamut-1.jpg','imagenes/mamut-1-1.jpg','imágenes/mamut-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Mamut</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="lovdo" data-nombre="Lovdo" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 03<img src="imagenes/lovdo-1.jpg" alt="Piezas para Lovdo" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 03<img src="imagenes/lovdo-1.jpg" alt="Piezas para Lovdo" onerror="var s=['imágenes/lovdo-1.jpg','imagenes/lovdo-1-1.jpg','imágenes/lovdo-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Lovdo</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="docpopcorn" data-nombre="Doc Popcorn" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 04<img src="imagenes/docpopcorn-1.jpg" alt="Piezas para Doc Popcorn" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 04<img src="imagenes/docpopcorn-1.jpg" alt="Piezas para Doc Popcorn" onerror="var s=['imágenes/docpopcorn-1.jpg','imagenes/docpopcorn-1-1.jpg','imágenes/docpopcorn-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Doc Popcorn</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="tommybeans" data-nombre="Tommy Beans" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 05<img src="imagenes/tommybeans-1.jpg" alt="Piezas para Tommy Beans" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 05<img src="imagenes/tommybeans-1.jpg" alt="Piezas para Tommy Beans" onerror="var s=['imágenes/tommybeans-1.jpg','imagenes/tommybeans-1-1.jpg','imágenes/tommybeans-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Tommy Beans</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
     <figure class="pieza reveal" data-marca="barriochicken" data-nombre="Barrio Chicken" data-detalle="Piezas gráficas y contenido para redes" role="button" tabindex="0">
-      <div class="ph">PIEZA 06<img src="imagenes/barriochicken-1.jpg" alt="Piezas para Barrio Chicken" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('imagenes/','imágenes/')}else{this.remove()}"></div>
+      <div class="ph">PIEZA 06<img src="imagenes/barriochicken-1.jpg" alt="Piezas para Barrio Chicken" onerror="var s=['imágenes/barriochicken-1.jpg','imagenes/barriochicken-1-1.jpg','imágenes/barriochicken-1-1.jpg'];this.dataset.f=(+this.dataset.f||0)+1;if(this.dataset.f<=3)this.src=s[this.dataset.f-1];else this.remove()"></div>
       <figcaption><div><h3>Barrio Chicken</h3><p>Piezas gráficas y contenido para redes</p></div><span class="flecha">→</span></figcaption>
     </figure>
   </div>
@@ -535,6 +546,70 @@
     return post;
   }
 
+  // Carga una imagen probando ambas carpetas (con y sin tilde)
+  function cargarImg(nombre, ok, fallo){
+    const im = new Image();
+    im.onload = () => ok(im);
+    im.onerror = () => {
+      const im2 = new Image();
+      im2.onload = () => ok(im2);
+      im2.onerror = fallo;
+      im2.src = 'imágenes/' + nombre;
+    };
+    im.src = 'imagenes/' + nombre;
+  }
+
+  // Post carrusel estilo Instagram: deslizable con puntitos y contador
+  function crearCarrusel(slides, marca, nombre){
+    const inicial = nombre.charAt(0).toUpperCase();
+    const post = document.createElement('div');
+    post.className = 'ig-post';
+    post.innerHTML = '<div class="ig-head"><span class="ig-avatar">' + inicial + '</span><span class="ig-user">@' + marca + '</span></div>' +
+      '<span class="ig-contador">1/' + slides.length + '</span>';
+    const tira = document.createElement('div');
+    tira.className = 'ig-tira';
+    slides.forEach(s => tira.appendChild(s));
+    post.appendChild(tira);
+    const puntos = document.createElement('div');
+    puntos.className = 'ig-puntos';
+    slides.forEach((_, j) => {
+      const p = document.createElement('span');
+      if(j === 0) p.classList.add('activo');
+      puntos.appendChild(p);
+    });
+    post.appendChild(puntos);
+    const acciones = document.createElement('div');
+    acciones.className = 'ig-actions';
+    acciones.innerHTML = '<span>♡</span><span>💬</span><span>➤</span><span class="guardar">⌲</span>';
+    post.appendChild(acciones);
+    const likes = document.createElement('div');
+    likes.className = 'ig-likes';
+    likes.textContent = 'Diseño: Yanhara Faúndez';
+    post.appendChild(likes);
+    const contador = post.querySelector('.ig-contador');
+    tira.addEventListener('scroll', () => {
+      const idx = Math.round(tira.scrollLeft / tira.clientWidth);
+      contador.textContent = (idx + 1) + '/' + slides.length;
+      puntos.querySelectorAll('span').forEach((p, j) => p.classList.toggle('activo', j === idx));
+    });
+    return post;
+  }
+
+  // Carga las diapositivas marca-N-1.jpg, marca-N-2.jpg... de un carrusel
+  function cargarCarrusel(marca, i, nombre){
+    const slides = [];
+    function siguiente(j){
+      cargarImg(marca + '-' + i + '-' + j + '.jpg', img => {
+        img.alt = nombre + ' carrusel ' + i + ' lámina ' + j;
+        slides.push(img);
+        siguiente(j + 1);
+      }, () => {
+        if(slides.length > 0) mGrid.appendChild(crearCarrusel(slides, marca, nombre));
+      });
+    }
+    siguiente(1);
+  }
+
   function abrirGaleria(card){
     const marca = card.dataset.marca;
     const nombre = card.dataset.nombre;
@@ -542,13 +617,13 @@
     mDetalle.textContent = card.dataset.detalle;
     mGrid.innerHTML = '';
     for(let i = 1; i <= MAX_PIEZAS; i++){
-      const img = document.createElement('img');
-      img.alt = nombre + ' pieza ' + i;
-      img.onload = () => { mGrid.appendChild(crearMockup(img, marca, nombre)); };
-      img.onerror = () => {
-        if(!img.dataset.f){ img.dataset.f = 1; img.src = 'imágenes/' + marca + '-' + i + '.jpg'; }
-      };
-      img.src = 'imagenes/' + marca + '-' + i + '.jpg';
+      // Primero busca pieza individual marca-N.jpg; si no existe, busca carrusel marca-N-1.jpg...
+      (function(n){
+        cargarImg(marca + '-' + n + '.jpg', img => {
+          img.alt = nombre + ' pieza ' + n;
+          mGrid.appendChild(crearMockup(img, marca, nombre));
+        }, () => cargarCarrusel(marca, n, nombre));
+      })(i);
     }
     setTimeout(()=>{
       if(mGrid.children.length === 0){
