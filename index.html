@@ -121,6 +121,20 @@
   }
   .reel-marco iframe{width:100%;height:100%;border:0;display:block}
   .reel-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
+
+  /* ---------- REEL: varios videos en grilla ---------- */
+  .reel-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;
+  }
+  .reel-item{
+    position:relative;border-radius:var(--radio);overflow:hidden;aspect-ratio:9/16;
+    background:var(--panel);border:1px solid var(--borde);
+  }
+  .reel-item::before{
+    content:"";position:absolute;inset:-2px;z-index:-1;border-radius:var(--radio);
+    background:linear-gradient(120deg,var(--rosa),var(--azul),var(--verde));filter:blur(18px);opacity:.35;
+  }
+  .reel-item iframe{width:100%;height:100%;border:0;display:block}
   .play{
     width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--azul));
     display:grid;place-items:center;font-size:1.5rem;color:#fff;animation:pulso 2.4s ease-in-out infinite;
@@ -353,16 +367,25 @@
 <section id="reel">
   <h2 class="titulo-seccion reveal"><span class="num">01</span> Reel</h2>
   <p class="sub-seccion reveal">Una muestra en movimiento de mi trabajo.</p>
-  <div class="reel-marco reveal">
-    <!-- ✏️ CUANDO SUBAS TU REEL: borra el div "reel-placeholder" y descomenta
-         el iframe pegando tu enlace de YouTube (youtube.com/embed/CODIGO) o
-         Vimeo (player.vimeo.com/video/CODIGO) -->
-    <div class="reel-placeholder">
-      <div class="play">▶</div>
-      <strong style="font-family:'Unbounded'">REEL 2026</strong>
-      <span style="color:var(--suave);font-size:.9rem">Próximamente — mientras tanto, mira mis trabajos abajo ↓</span>
+  <!--
+    ✏️ CÓMO AGREGAR CADA VIDEO DE GOOGLE DRIVE:
+    1) En Drive, comparte el video como "Cualquier persona con el enlace" (Lector).
+    2) Copia el link, se ve así: https://drive.google.com/file/d/AQUI_VA_EL_ID/view?usp=sharing
+    3) Copia SOLO el ID (la parte entre /d/ y /view) y pégalo abajo donde dice ID_DEL_VIDEO.
+    4) Duplica el bloque <div class="reel-item">...</div> completo por cada video nuevo.
+  -->
+  <div class="reel-grid">
+    <div class="reel-item reveal">
+      <div class="reel-placeholder">
+        <div class="play">▶</div>
+        <strong style="font-family:'Unbounded'">REEL 2026</strong>
+        <span style="color:var(--suave);font-size:.9rem">Próximamente</span>
+      </div>
+      <!-- Cuando tengas el video, reemplaza el div de arriba por esta línea (borrando el placeholder):
+      <iframe src="https://drive.google.com/file/d/ID_DEL_VIDEO/preview" allow="autoplay" allowfullscreen title="Reel"></iframe>
+      -->
     </div>
-    <!-- <iframe src="https://www.youtube.com/embed/TU_CODIGO" title="Reel" allowfullscreen></iframe> -->
+    <!-- 👆 Copia y pega este mismo bloque "reel-item" completo por cada video nuevo que agregues -->
   </div>
 </section>
 
